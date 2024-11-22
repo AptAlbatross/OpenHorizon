@@ -1,0 +1,41 @@
+-- Get the Players service from the game
+local Players = game:GetService("Players")
+
+-- Function that runs when a player joins the game
+local function PlayerJoined(player)
+
+	-- Function to remove meshes and set the default mesh for the player
+	local function RemoveMeshes(character)
+
+		-- Get the Humanoid object from the character
+		local humanoid = character:WaitForChild("Humanoid")
+		wait()
+
+		-- Get the current appearance description of the humanoid
+		local CurrentDescription = humanoid:GetAppliedDescription() 
+
+		-- Check if the player's torso is not equal to 0 or 48474356, then set it to 0
+		if CurrentDescription.Torso ~= 0 and CurrentDescription.Torso ~= 48474356 then
+			CurrentDescription.Torso = 0
+		end
+
+		-- Set the head, arms, and legs to the default mesh (id 0)
+		CurrentDescription.Head = 0
+		CurrentDescription.LeftArm = 0
+		CurrentDescription.RightArm = 0
+		CurrentDescription.LeftLeg = 0
+		CurrentDescription.RightLeg = 0
+
+		-- Apply the modified appearance description to the humanoid
+		humanoid:ApplyDescription(CurrentDescription)
+	end
+
+	-- Connect the RemoveMeshes function to the CharacterAppearanceLoaded event of the player
+	player.CharacterAppearanceLoaded:Connect(RemoveMeshes)
+end
+
+-- Connect the PlayerJoined function to the PlayerAdded event of the Players service
+Players.PlayerAdded:Connect(PlayerJoined)
+
+-- Credit - @AptAlbatross. Support Credit - @HugeCoolboy2007, @ReloadedO.
+-- https://devforum.roblox.com/t/script-that-changes-the-players-character-parts-unless-they-join-already-wearing-a-certain-character-part/3057994/4
