@@ -1,2 +1,2 @@
-# Open Horizon VR (OHVR) client.
-The Open Horizon VR client (OHVR) is the VR client used in the game Open Horizon (pretty self explanatory). The client is in development, being made by @AptAlbatross & @Desty_e on Roblox.
+# Open Horizon VR Open Source.
+The Open Horizon VR project is to be an open source VR library for any developers looking to use assets used in the Open Horizongame on Roblox. Being developed by @AptAlbatross & @Desty_e on Roblox.
